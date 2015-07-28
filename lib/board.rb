@@ -2,22 +2,23 @@ require_relative 'ship'
 
 class Board
 
-  attr_reader :board
+  attr_reader :cells
 
   def initialize
-    @board = ''
+    @cells = []
   end
 
-  def place
-    @board = $e_ships
+  def place (ship)
+    @cells << ship.pos
   end
 
   def empty?
-    @board.empty?
+    @cells.empty?
   end
 
   def fire(pos)
-    return 'Hit' if @board.include? (pos)
+    return 'Hit' if @cells.include? (pos)
+    return 'Miss'
   end
 end
 
